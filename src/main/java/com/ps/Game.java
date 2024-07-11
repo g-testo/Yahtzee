@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Game {
     private int currentRound;
@@ -12,8 +11,7 @@ public class Game {
 
     private ArrayList<Integer> currentRoll = new ArrayList<>();
 
-    private ArrayList<Combination> upperCombinations = new ArrayList<>();
-    private ArrayList<Combination> lowerCombinations = new ArrayList<>();;
+    private ArrayList<Combination> combinations = new ArrayList<>();
 
     public Game(){
         populateCombinations();
@@ -28,19 +26,11 @@ public class Game {
             BufferedReader bufReader = new BufferedReader(new FileReader("combinations.csv"));
 
             String input;
-            int lineCount = 0;
             while((input = bufReader.readLine()) != null){
-                lineCount++;
-
                 String[] splitLine = input.split(",");
                 int id = Integer.parseInt(splitLine[0]);
                 String displayName = splitLine[1];
-
-                if(lineCount < 8){
-                    upperCombinations.add(new Combination(id, displayName));
-                } else {
-                    lowerCombinations.add(new Combination(id, displayName));
-                }
+                combinations.add(new Combination(id, displayName));
             }
         } catch (IOException e){
             e.printStackTrace();
@@ -97,11 +87,7 @@ public class Game {
         return this.currentRoll;
     }
 
-    public ArrayList<Combination> getUpperCombinations() {
-        return upperCombinations;
-    }
-
-    public ArrayList<Combination> getLowerCombinations() {
-        return lowerCombinations;
+    public ArrayList<Combination> getCombinations() {
+        return combinations;
     }
 }

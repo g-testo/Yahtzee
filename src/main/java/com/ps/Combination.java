@@ -5,10 +5,14 @@ import java.util.ArrayList;
 public class Combination {
     private int id;
     private String displayName;
+    private boolean hasUsedThisGame;
+    private Integer recordedScore;
 
     public Combination(int id, String displayName) {
         this.id = id;
         this.displayName = displayName;
+        this.hasUsedThisGame = false;
+        this.recordedScore = null;
     }
 
     public int calculateScore(ArrayList<Integer> dice){
@@ -52,5 +56,21 @@ public class Combination {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    public boolean getHasUsedThisGame() {
+        return hasUsedThisGame;
+    }
+
+    public void setHasUsedThisGame(boolean hasUsedThisGame) {
+        this.hasUsedThisGame = hasUsedThisGame;
+    }
+
+    public Integer getRecordedScore() {
+        return recordedScore;
+    }
+
+    public void setRecordedScore(Integer recordedScore) {
+        this.recordedScore = recordedScore;
     }
 }
